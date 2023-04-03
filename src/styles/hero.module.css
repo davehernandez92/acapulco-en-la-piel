@@ -1,0 +1,31 @@
+.hero{
+    background-image: url('../../public/MOBILE/WEB8V.jpg');
+    height: 100vh;
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero img {
+    width: 150px;
+    height: 150px;
+
+}
+
+
+@media screen and (min-width: 768px) {
+    .hero{
+        background-image: url('../../public/mustDo/acah1.webp');
+        background-size: cover;
+          
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .hero img {
+        width: auto;
+        height: auto;
+    }
+}

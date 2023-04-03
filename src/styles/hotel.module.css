@@ -1,0 +1,205 @@
+
+
+.navegacion {
+    display: flex;
+    width: 85%;
+    margin: 8rem auto 4rem auto;
+
+    
+}
+.navegacion a, .navegacion p {
+    color: var(--black);
+    font-size: 2.3rem;
+    font-weight: lighter;
+    font-family: var(--primary-font);
+}
+.navegacion p {
+    margin: 0 1rem;
+}
+.galeria, .title , .subtitle {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.slide{
+    width: 94dvw;
+    min-height: 280px;
+    padding: 4px;
+    margin: 2rem auto;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    
+    
+}
+.descripcion{
+    width: 90%;
+    margin: 0 auto 3rem auto;
+
+}
+.descripcion p {
+    margin: 1rem 0;
+    word-spacing: .08em;
+   
+}
+.datos{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto 3rem auto;
+    align-items: center;
+   
+    
+
+}
+.datos__direccion{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 5px;
+    transition: box-shadow 0.2s ease-in-out;
+    border-radius: 3px;
+    background-color: var(--white);
+    height: 18rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.datos__direccion h4{
+    margin-bottom: 1rem;
+}
+.datos__direccion a{
+    display: flex;
+    padding-right: 2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--black);
+}
+.datos__contacto{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 5px;
+    transition: box-shadow 0.2s ease-in-out;
+    border-radius: 3px;
+    background-color: var(--white);
+    height: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 4rem 0 2rem 0;
+}
+.datos__contacto h4 {
+    margin-bottom: 1rem;
+}
+.contacto__telLink{
+    color: var(--black);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 3rem;
+}
+
+.contacto__telIcono {
+    width: 25px;
+    height: auto;
+    margin-left: 2rem;
+}
+.datos__iconos{
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content:space-between;
+}
+.social{
+    width: 40px;
+    height: 40px;
+}
+.website__icon img{
+    width: 42px;
+    height: 42px;
+}
+
+
+.datos__direccion:hover , .datos__contacto:hover{
+    box-shadow: rgb(204, 219, 232) 2px 2px 4px 0px inset, rgba(255, 255, 255, 0.5) -2px -2px 4px 1px inset;
+}
+
+.galeria{
+    width: 100%;
+}
+
+@media screen and (min-width: 758px) {
+    .title, .subtitle{
+        margin: 1rem 0 0 10%;
+
+    }
+    .title {
+        font-size: 4rem;
+    }
+
+    .subtitle{
+        font-size: 2.2rem;
+        font-weight: 500;
+        font-style: oblique;
+    }
+    
+    .slide{
+        width: 80%;
+        min-height: auto;
+        margin: 5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .slide img {
+        height: 900px;
+        width: auto; 
+       
+    }
+
+    .descripcion{
+        width: 80%
+    }
+    .descripcion h3 {
+        font-size: 2.4rem;
+    }
+    .descripcion p {
+        font-size: 1.99rem;
+
+    }
+
+    .datos{
+        width: 80%;
+        flex-direction: row;
+        justify-content:space-between;
+        gap: 2rem;
+        margin-top: 3rem;
+        
+    }
+    .datos__direccion{
+       min-height: 270px; 
+    }
+    .datos__contacto{
+        min-height: 270px;
+        margin: 0;
+    }
+    .contacto__telLink{
+        margin-bottom: 1rem;
+    }
+    .galeria__title{
+        margin: 2rem 0 4rem 10%
+    }
+
+}
+@media screen and (min-width: 1250px) {
+    .datos{
+        width: 70%;
+        margin-top: 13rem;
+    }
+}
+@media screen and (min-width: 1550px) {
+    .datos{
+        width: 55%;
+        margin-top: 13rem;
+        
+    }
+}

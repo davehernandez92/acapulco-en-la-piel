@@ -1,0 +1,105 @@
+.footer {
+    width: 100%;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+    background: url('../../public/wave2.svg');
+    background-size: cover;
+    padding:0 1.2rem;
+    
+}
+.footer__title{
+    padding: 3rem 0 1rem 0;
+    width: 100%;
+    font-size: 2.2rem;
+}
+.footer__socials{
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer__socials h2 {
+    font-size: 1.7rem;
+    font-weight: 900;
+    text-align: left;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.footer__list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    font-size: 1.3rem;
+    gap: 1rem;
+}
+.social__container{
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+.socialsIcon{
+    height: 20px;
+    width: 25px;
+    
+    
+}
+
+.footer__list li {
+    margin: 1rem 0;
+}
+
+.davedev{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    justify-content: flex-end;
+    margin-top: 100%;
+    
+}
+.davedev a {
+    font-size: 1.2rem;
+}
+@media screen and (min-width: 588px) {
+
+    .footer{
+        grid-template-columns: none;
+        justify-content: space-around;
+    }
+   
+    .footer__socials{
+        text-align: center;
+    }
+    .footer__list{
+        flex-direction: unset;
+    }
+    .social__container{
+        flex-direction: column;
+        gap: 0;
+        margin-top: 2rem;
+    }
+    .davedev{
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        
+        background: url('../../public/wave.svg');
+        background-size: cover;
+       
+    }
+    
+}

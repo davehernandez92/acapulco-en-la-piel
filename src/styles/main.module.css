@@ -1,0 +1,312 @@
+.heading {
+    font-size: 3.8rem;
+    max-width: 85vw;
+    margin: 5rem auto;
+    padding-right: 5%;
+    font-family: var(--heading-font);
+   
+    
+
+}
+.main__grid {
+    display: grid;
+    gap: 2rem;
+    max-width: 95dvw;
+    margin: 0 auto;
+    color: white
+}
+.main__grid a {
+    max-width: 100%;
+    height: 350px;
+
+}
+
+.grid__item > div {
+    width: 100%;
+    height: 320px;
+    margin: 2rem 0;
+    
+}
+
+.grid__info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+    background-color: rgba(9, 9, 9, 0.331);
+    top: 0;
+    transition: top .3s ease,  background-color .2s ease ;
+
+    
+}
+.grid__info div {
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    height: 100%;
+    align-items: flex-end;
+}
+
+.grid__info div h2 {
+    font-size: 2.9rem;
+    
+   
+}
+.info__p {
+    display: none;
+    
+}
+.arrowRight{
+    display: none;
+    
+}
+
+
+.grid__item1{
+    
+    background-image: url('../../public/mustDo/hotel2.webp');
+    background-position:center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.grid__item1:hover .grid__info  {
+    background-color: rgba(0, 0, 0, 0.082);
+    
+}
+.grid__item1:hover .info__p {
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+.grid__item2{
+    
+    background-image: url('../../public/mustDo/comer.webp');
+    background-position:center;    
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.grid__item2:hover .grid__info  {
+
+    background-color: rgba(0, 0, 0, 0.082);
+    
+}
+.grid__item2:hover .info__p {
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+.grid__item3{
+    
+    background-image: url('../../public/mustDo/services.webp');
+    background-position:center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.grid__item3:hover .grid__info  {
+
+    background-color: rgba(0, 0, 0, 0.082);
+    
+}
+.grid__item3:hover .info__p {
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+.grid__item4{
+    
+    background-image: url('../../public/mustDo/galeria.webp');
+    background-position:top;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.grid__item4:hover .grid__info  {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.082);
+    
+}
+.grid__item4:hover .info__p {
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+.grid__item5{
+    
+    background-image: url('../../public/mustDo/merch.webp');
+    background-position:top;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.grid__item5:hover .grid__info  {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.082);
+    
+}
+.grid__item5:hover .info__p {
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+.grid__item6{
+   
+    background-image: url('../../public/mustDo/hotel1.webp');
+    background-position:center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+.grid__item6:hover .grid__info  {
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.082);
+    
+}
+.grid__item6:hover .info__p {
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+
+@media screen and (min-width: 550px) {
+    .heading{
+        font-size: 5rem;
+        margin: 10rem auto 5rem auto;
+    }
+    .main__grid {
+        
+        gap: 0.5rem;
+        grid-template-areas: "area1 area1 area1 area1 " "area2 area2 area3 area3" " area6 area6 area6 area6" "area4 area4 area5 area5";
+        max-width: 95dvw;
+       
+    }
+    .grid__item1{
+        grid-area: area1;
+    }
+    .grid__item1:hover .grid__info  {
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.615);
+        
+    }
+    .grid__item2{
+        grid-area: area2;
+    }
+    .grid__item2:hover .grid__info  {
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.615);
+        
+    }
+    .grid__item3{
+        grid-area: area3;
+    }
+    .grid__item3:hover .grid__info  {
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.615);
+        
+    }
+    .grid__item4{
+        grid-area: area4;
+    }
+    .grid__item4:hover .grid__info  {
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.615);
+        
+    }
+    .grid__item5{
+        grid-area: area5;
+    }
+    .grid__item5:hover .grid__info  {
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.615);
+        
+    }
+
+    .grid__item6{
+        grid-area: area6;
+    }
+    .grid__item6:hover .grid__info  {
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.615);
+        
+    }
+
+    .grid__info{
+        background-color: rgba(9, 9, 9, 0);
+        top: 75%;
+    }
+    .grid__info div {
+        align-items: center;
+        height: 20%;
+    }
+
+    .grid__info div h2 {
+        font-size: 1.9rem;
+        background-color: rgba(40, 39, 39, 0.169);
+        
+        
+    }
+    .info__p{
+        display: unset;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 1.8s;
+    }
+
+    .arrowRight{
+    display: unset;
+    width: 2rem;
+    height: auto;
+    transition: all .2s ease;
+    }
+    .arrowRight:hover {
+    transform: translateX(10px);
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .main__grid {
+        
+        gap: 0.7rem;
+        grid-template-areas: "area1 area1 area1 area2 area2 area3 area3 " "area4 area4 area5 area5 area6 area6 area6";
+        max-width: 85dvw;
+        max-height: 850px;
+       
+    }
+    .grid__info{
+        background-color: rgba(9, 9, 9, 0);
+        top: 75%;
+    }
+    
+    .grid__info div {
+        align-items: center;
+        height: 20%;
+    }
+
+    .grid__info div h2 {
+        font-size: 2.9rem;
+        background-color: rgba(40, 39, 39, 0.169);
+        
+        
+    }
+ .info__p{
+        display: unset;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 1.8s;
+    }
+    .arrowRight{
+    display: unset;
+    width: 2rem;
+    height: auto;
+    transition: all .2s ease;
+    }
+    .arrowRight:hover {
+    transform: translateX(10px);
+    }
+}
