@@ -7,8 +7,8 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import styles from '../../styles/hotel.module.css'
 import hotel1 from "../../../public/DESKTOP/costaAzul.avif"
-import hotel2 from "../../../public/DESKTOP/WEB3.jpg"
-import hotel3 from "../../../public/DESKTOP/WEB4.jpg"
+import hotel2 from "../../../public/DESKTOP/costaAzul.avif"
+import hotel3 from "../../../public/DESKTOP/costaAzul.avif"
 import mapsIcon from '../../../public/google-maps.png'
 import facebook from '../../../public/facebook.png'
 import instagram from '../../../public/instagram1.png'

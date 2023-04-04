@@ -1,0 +1,47 @@
+.hero{
+    background-image: url('../../public/DESKTOP/SanDiego.jpg');
+    height: 100vh;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero img {
+    width: 150px;
+    height: 150px;
+
+}
+
+.heading__wrapp{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    
+}
+
+.hoteles__heading {
+    color: var(--white);
+    position: absolute;
+    bottom: 20%;
+    font-size: 6.2rem;
+    text-align: center;
+    width: 90%;
+    letter-spacing: .4rem;
+}
+
+@media screen and (min-width: 768px) {
+    .hero{
+        background-image:  url('../../public/DESKTOP/SanDiego.jpg');
+        background-size: cover;
+          
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .hero img {
+        width: auto;
+        height: auto;
+    }
+}
