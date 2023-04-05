@@ -3,7 +3,6 @@ import Card from '@/components/card';
 import Link from 'next/link';
 import heroCSS from '../styles/hero.module.css'
 import styles from '../styles/hoteles.module.css'
-
 import hotel1 from "../../public/DESKTOP/costaAzul.avif"
 import hotel2 from "../../public/DESKTOP/costaAzul.avif"
 import hotel3 from "../../public/DESKTOP/costaAzul.avif"

@@ -16,9 +16,6 @@ import telefono from '../../../public/telephone.png'
 import website  from '../../../public/internet.png'
 
 
-
-
-
 export default function Hotel({hotel, photos}) {
   
 
