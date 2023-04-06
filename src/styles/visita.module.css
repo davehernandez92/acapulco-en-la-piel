@@ -99,22 +99,32 @@
         align-items: center;
         letter-spacing: .6rem;
     }
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
 
     .main__heading {
         display: flex;
+        flex-direction: column;
         justify-content:space-between;
         align-items: center;
+        width: 100%;
         
     }
     .main__heading h1{
-        width: 60%;
+        text-align: center;
         width: 40%;
     }
     .main__heading p {
-        width: 60%;
+        width: 70%;
         text-align: center;
-        margin: 0 auto;
+        margin: 1rem auto;
     }
+
 }
 
 @media screen and (min-width: 968px) {
