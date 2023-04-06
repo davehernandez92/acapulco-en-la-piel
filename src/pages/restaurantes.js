@@ -24,7 +24,7 @@ export default function Restaurantes({restaurantes}) {
           <div className={styles.navegacion}>
             <Link href={"/"}>Inicio </Link>
             <p> {">"} </p>
-            <Link href={"#"}>Restaurantes </Link>
+            <Link href={"#"}>Restaurantes</Link>
           </div>
 
           <div className={styles.hoteles__subtitle}>

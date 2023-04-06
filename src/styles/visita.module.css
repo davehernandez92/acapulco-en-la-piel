@@ -1,5 +1,5 @@
 .hero{
-    background-image: url('../../public/DESKTOP/SanDiego.jpg');
+    background-image: url('../../public/MOBILE/WEB5V.webp');
     height: 100vh;
     background-size: cover; 
     background-position: center;
@@ -74,7 +74,7 @@
 
 @media screen and (min-width: 768px) {
     .hero{
-        background-image:  url('../../public/DESKTOP/SanDiego.jpg');
+        background-image:  url('../../public/DESKTOP/SanDiego.webp');
         background-size: cover;
           
     }
