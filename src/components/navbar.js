@@ -36,25 +36,25 @@ export default function Navbar() {
       </div>
       <ul className={`menu ${isMenuOpen ? "open" : ""}`}>
         <li>
-          <Link href="/">Inicio</Link>
+          <Link className={styles.menu__txt} href="/">Inicio</Link>
         </li>
         <li>
-          <Link href="/hoteles">Hoteles</Link>
+          <Link className={styles.menu__txt} href="/hoteles">Hoteles</Link>
         </li>
         <li>
-          <Link href="/restaurantes">Restaurantes</Link>
+          <Link className={styles.menu__txt} href="/restaurantes">Restaurantes</Link>
         </li>
         <li>
-          <Link href="/visita">Para Visitar</Link>
+          <Link className={styles.menu__txt} href="/visita">Para Visitar</Link>
         </li>
         <li>
-          <Link href="/servicios">Servicios</Link>
+          <Link className={styles.menu__txt} href="/servicios">Servicios</Link>
         </li>
         <li>
-          <Link href="/mercancia">Mercancia Oficial</Link>
+          <Link className={styles.menu__txt} href="/mercancia">Mercancia Oficial</Link>
         </li>
         <li>
-          <Link href="/contacto">Contacto</Link>
+          <Link className={styles.menu__txt} href="/contacto">Contacto</Link>
         </li>
         <div className={styles.icons__div}>
           <Link href={"https://www.instagram.com/acapulcoenlapiel/"}>
