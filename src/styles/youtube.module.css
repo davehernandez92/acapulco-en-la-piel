@@ -1,18 +1,21 @@
+
 .container {
     margin: 4rem auto;
     width: 85vw;
 }
 .container h2{
-margin-top: 2rem;
+    margin-top: 2rem;
 }
 
-.container p {
+.text {
     margin: 1.5rem 0 3rem 0;
+    width: 100%;    
 }
 .iframe iframe{
     max-width: 100%;
 }
-@media screen and (min-width: 85px) {
+@media screen and (min-width: 850px) {
+   
     .container {
         margin: 8rem auto;
     }
@@ -28,7 +31,7 @@ margin-top: 2rem;
     }
     .iframe iframe {
        
-       
+       margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;

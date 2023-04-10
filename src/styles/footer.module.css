@@ -6,7 +6,7 @@
     gap: 2rem;
     justify-content: flex-start;
     align-items: center;
-    background: url('../../public/wave2.svg');
+    background: url('../../public/waveMobile.svg');
     background-size: cover;
     padding:0 1.2rem;
     
@@ -80,6 +80,7 @@
    
     .footer__socials{
         text-align: center;
+        margin: 2.6rem 0 0 0;
     }
     .footer__list{
         flex-direction: unset;
@@ -96,8 +97,8 @@
 
 @media screen and (min-width: 768px) {
     .footer {
-        
-        background: url('../../public/wave.svg');
+        height: 320px;
+        background: url('../../public/waveDesktop.svg');      
         background-size: cover;
        
     }

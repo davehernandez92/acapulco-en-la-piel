@@ -4,10 +4,12 @@ import styles from '../styles/youtube.module.css'
 export default function Youtube() {
     
   return (
-    <section className={styles.container}>
+    <section>
+    <div className={styles.divider}></div>
+    <div className={styles.container}>
       <div>
         <h2> Conoce nuestro canal de Youtube</h2>
-        <p>
+        <p className={styles.text}>
           ¡Hey! ¿Estás buscando contenido interesante y entretenido en YouTube sobre Acapulco?
           ¡Tenemos justo lo que necesitas! Entra y conoce nuestro canal y
           descubre todo Acapulco en un solo lugar. Desde hoteles, restaurantes,
@@ -15,9 +17,9 @@ export default function Youtube() {
         </p>
       </div>
       <VideoPlayer/>
+
+    </div>
     
-      
-      <div></div>
     </section>
     
   );

@@ -13,7 +13,7 @@
     gap: 2rem;
     max-width: 95dvw;
     margin: 0 auto;
-    color: white
+    color: white;
 }
 .main__grid a {
     max-width: 100%;
@@ -173,6 +173,8 @@
     transform: translateY(0);
     opacity: 1; 
 }
+
+
 
 
 @media screen and (min-width: 550px) {
