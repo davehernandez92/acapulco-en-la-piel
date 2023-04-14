@@ -30,8 +30,7 @@ export default function Hotel({hotel}) {
       }
     
     
-  console.log(hotel.imagenes);
-   
+
   return (
     <Layout>
       <>
