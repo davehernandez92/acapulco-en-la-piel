@@ -32,10 +32,10 @@ export default function GaleriaComponent({ images }) {
       {images.map((image, index) => (
         <div key={index} className={styles.image_container}>
           <Image
-            src={image.src.medium}
+            src={image.src}
             alt={image.alt}
-            width={image.width}
-            height={image.height}
+            width={1242}
+            height={932}
             onClick={() => expandImage(index)}
           />
         </div>
@@ -51,10 +51,10 @@ export default function GaleriaComponent({ images }) {
                 X
               </button>
               <Image
-                src={images[expandedImageIndex].src.large}
+                src={images[expandedImageIndex].src}
                 alt={images[expandedImageIndex].alt}
-                width={images[expandedImageIndex].width}
-                height={images[expandedImageIndex].height}
+                width={1242}
+                height={932}
               />
             </div>
 
