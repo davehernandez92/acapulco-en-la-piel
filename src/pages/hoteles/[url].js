@@ -1,4 +1,5 @@
 import Layout from '@/components/layout'
+import Youtube from "@/components/youtube";
 import GaleriaComponent from '@/components/galeria.jsx'
 import EmailButton from '@/components/emailButton'
 import { useRouter } from "next/router"
@@ -120,8 +121,14 @@ export default function Hotel({hotel}) {
 
         </div>
         <div className={styles.galeria}>
-          <h1 className={styles.galeria__title}>Galeria</h1>
 
+          <Youtube
+          titulo="¡Checa nuestro video de este Hotel!"
+          texto= {`En este video visitamos por ti el ${hotel.title}, checa de primera mano como llegar a este hotel y conocelo a traves de nuestros ojos primo!  `}
+          video={`${hotel.video}`}
+        />
+
+          <h1 className={styles.galeria__title}>Galeria</h1>
           <GaleriaComponent
             images={hotel.imagenes}
           />
@@ -151,7 +158,7 @@ export async function getServerSideProps(context) {
       face: "https://www.facebook.com/hotelcarlisa",
       insta: "",
       email: "hotel_carlisa@hotmail.com",
-      video: "https://www.youtube.com/embed/UhgdzL3r1Ek",
+      video: "UhgdzL3r1Ek",
       imagenes: [ 
         {src:'/Hoteles/Hotel Carlisa/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/Hotel Carlisa/2.webp', alt: 'Imagen del la galeria'},
@@ -172,7 +179,7 @@ export async function getServerSideProps(context) {
       face: "https://www.facebook.com/dondemiraelsol",
       insta: "",
       email: "",
-      video: "https://www.youtube.com/embed/WAscT2C_vBk",
+      video: "WAscT2C_vBk",
       imagenes: [ 
         {src:'/Hoteles/Donde mira el Sol/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/Donde mira el Sol/2.webp', alt: 'Imagen del la galeria'},
@@ -193,7 +200,7 @@ export async function getServerSideProps(context) {
       face: "https://www.facebook.com/people/Hotel-Miramar/100054317718961/",
       insta: "",
       email: "",
-      video: "https://www.youtube.com/embed/lXcCu1BJQeA",
+      video: "lXcCu1BJQeA",
       imagenes: [ 
         {src:'/Hoteles/Hotel Miramar/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/Hotel Miramar/2.webp', alt: 'Imagen del la galeria'},
@@ -214,7 +221,7 @@ export async function getServerSideProps(context) {
       face: "https://www.facebook.com/DelValleHotel",
       insta: "",
       email: "hotelvalle6204@gmail.com",
-      video: "https://www.youtube.com/embed/YU6FlmCXCfQ",
+      video: "YU6FlmCXCfQ",
       imagenes: [ 
         {src:'/Hoteles/Hotel del Valle/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/Hotel del Valle/2.webp', alt: 'Imagen del la galeria'},
@@ -235,7 +242,7 @@ export async function getServerSideProps(context) {
       face: "https://www.facebook.com/lajunglahotel",
       insta: "",
       email: "hotellajungla445a@hotmail.com",
-      video: "https://www.youtube.com/embed/bmNq8B7hN98",
+      video: "bmNq8B7hN98",
       imagenes: [ 
         {src:'/Hoteles/La jungla/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/La jungla/2.webp', alt: 'Imagen del la galeria'},
@@ -256,7 +263,7 @@ export async function getServerSideProps(context) {
       face: "",
       insta: "",
       email: "",
-      video: "https://www.youtube.com/embed/GWAzQ0PRQs8",
+      video: "GWAzQ0PRQs8",
       imagenes: [ 
         {src:'/Hoteles/Suites Vicky/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/Suites Vicky/2.webp', alt: 'Imagen del la galeria'},
@@ -277,7 +284,7 @@ export async function getServerSideProps(context) {
       face: "https://www.facebook.com/people/Hotel-De-Los-Reyes-Acapulco/100063568123958/",
       insta: "",
       email: "hoteldelosreyesacapulco@hotmail.com",
-      video: "https://www.youtube.com/embed/2nGxCWnHHaM",
+      video: "2nGxCWnHHaM",
       imagenes: [ 
         {src:'/Hoteles/los reyes/1.webp', alt: 'Imagen del la galeria'},
         {src:'/Hoteles/los reyes/2.webp', alt: 'Imagen del la galeria'},

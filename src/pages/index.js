@@ -13,21 +13,23 @@ export default function Home() {
   return (
     <>
       <Layout title={"Inicio"}>
-        
-          <div className={heroCSS.hero}>
+        <div className={heroCSS.hero}>
           <motion.div animate={{ y: -20 }} transition={{ delay: 1 }}>
-              <Image src={logo} alt={'Acapulco en la piel logo'}/>
+            <Image src={logo} alt={"Acapulco en la piel logo"} />
+          </motion.div>
+        </div>
 
-            </motion.div>
-          </div>
-        
-        
-
-          <main>
-            <Main/>
-          </main>
-          <Youtube/>
-
+        <main>
+          <Main />
+        </main>
+        <Youtube
+          titulo="Conoce nuestro canal de Youtube"
+          texto="¡Hey! ¿Estás buscando contenido interesante y entretenido en YouTube sobre Acapulco?
+          ¡Tenemos justo lo que necesitas! Entra y conoce nuestro canal y
+          descubre todo Acapulco en un solo lugar. Desde hoteles, restaurantes,
+          playas y los mejores lugares que debes conocer."
+          video="UhgdzL3r1Ek"
+        />
       </Layout>
     </>
   );

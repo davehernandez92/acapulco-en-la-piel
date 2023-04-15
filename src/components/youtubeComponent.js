@@ -8,12 +8,11 @@ class VideoPlayer extends React.Component {
       height: '390',
       width: '640',
       playerVars: {
-        // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
       },
     };
 
-    return <YouTube className={styles.iframe} videoId="wMABUx_Re5o" opts={opts} onReady={this._onReady} />;
+    return <YouTube className={styles.iframe} videoId={this.props.videoId} opts={opts} onReady={this._onReady} />;
   }
   _onReady(event) {
     // access to player in all event handlers via event.target
