@@ -9,9 +9,9 @@ export default function Mercancia() {
     <>
       <Layout title={"Mercancia"}>
           <div className={styles.hero}>
-            <h1> PROXIMAMENTE</h1>
-            <Link href={'/'}>Volver a inicio</Link>
+
           </div>
+            <Link className={styles.link} href={'/'}>Volver a inicio</Link>
 
       </Layout>
     </>

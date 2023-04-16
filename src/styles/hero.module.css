@@ -1,5 +1,5 @@
 .hero{
-    background-image: url('../../public/MOBILE/WEB8V.webp');
+    background-image: url('../../public/MOBILE/seccionHotelesM.webp');
     height: 100vh;
     background-size: contain; 
     background-position: center;
@@ -17,7 +17,7 @@
 
 @media screen and (min-width: 768px) {
     .hero{
-        background-image: url('../../public/mustDo/acah1.webp');
+        background-image: url('../../public/DESKTOP/seccionHoteles.webp');
         background-size: cover;
           
     }
