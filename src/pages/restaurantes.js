@@ -6,7 +6,7 @@ import styles from '../styles/hoteles.module.css'
 
 import rest1 from "../../public/restaurantes/rosmarLogo2.jpg"
 import rest2 from "../../public/restaurantes/tarascosLogo.webp"
-import rest3 from "../../public/restaurantes/restDesk2.webp"
+import rest3 from "../../public/restaurantes/restDesk3.webp"
 import Link from 'next/link';
 
 export default function Restaurantes({restaurantes}) {
@@ -17,7 +17,7 @@ export default function Restaurantes({restaurantes}) {
         <div>
           <div className={heroCSS.hero}>
             <div className={styles.heading__wrapp}>
-              <h1 className={styles.hoteles__heading}>Restaurantes</h1>
+              
             </div>
           </div>
 
