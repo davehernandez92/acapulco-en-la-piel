@@ -1,4 +1,6 @@
-
+.hidden{
+    display: none;
+}
 
 .navegacion {
     display: flex;
@@ -107,7 +109,7 @@
     width: 100%;
     margin: 2rem auto;
     display: flex;
-    justify-content:space-between;
+    justify-content:space-evenly;
 }
 .social{
     width: 40px;

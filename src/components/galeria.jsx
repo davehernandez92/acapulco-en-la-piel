@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
-
+import next from '../../public/next.png'
+import previous from '../../public/back.png'
 import styles from "../styles/galeria.module.css";
 
 export default function GaleriaComponent({ images }) {
   
+
   const [expandedImageIndex, setExpandedImageIndex] = useState(null);
 
   const expandImage = (index) => {
@@ -32,10 +34,10 @@ export default function GaleriaComponent({ images }) {
       {images.map((image, index) => (
         <div key={index} className={styles.image_container}>
           <Image
-            src={image.src}
-            alt={image.alt}
-            width={1242}
-            height={932}
+            src={image.attributes.formats.large.url}
+            alt={image.attributes.alternativeText}
+            width={image.attributes.formats.large.width}
+            height={image.attributes.formats.large.height}
             onClick={() => expandImage(index)}
           />
         </div>
@@ -44,34 +46,41 @@ export default function GaleriaComponent({ images }) {
       {expandedImageIndex !== null && (
         <div className={styles.expanded_image_overlay}>
           <div className={styles.expanded_image_container}>
-            
-
             <div className={styles.expanded_image}>
-              <button className={styles.close_button} onClick={closeExpandedImage}>
+              <button
+                className={styles.close_button}
+                onClick={closeExpandedImage}
+              >
                 X
               </button>
               <Image
-                src={images[expandedImageIndex].src}
-                alt={images[expandedImageIndex].alt}
-                width={1242}
-                height={932}
+                src={images[expandedImageIndex].attributes.formats.large.url}
+                alt={images[expandedImageIndex].attributes.alternativeText}
+                width={
+                  images[expandedImageIndex].attributes.formats.large.width
+                }
+                height={
+                  images[expandedImageIndex].attributes.formats.large.height
+                }
               />
+
+              {expandedImageIndex > 0 && (
+                <button className={styles.prev_button} onClick={prevImage}>
+                  <h1> {"<"} </h1>
+                </button>
+              )}
+
+              {expandedImageIndex < images.length - 1 && (
+                <button className={styles.next_button} onClick={nextImage}>
+                  <h1> {">"} </h1>
+                </button>
+              )}
             </div>
-
-            {expandedImageIndex > 0 && (
-              <button className={styles.prev_button} onClick={prevImage}>
-                &#8249;
-              </button>
-            )}
-
-            {expandedImageIndex < images.length - 1 && (
-              <button className={styles.next_button} onClick={nextImage}>
-                &#8250;
-              </button>
-            )}
           </div>
         </div>
       )}
     </div>
   );
 }
+
+

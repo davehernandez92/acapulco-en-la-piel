@@ -7,9 +7,9 @@ import logo from "../../public/Acapulco-logo.png"
 import heroCSS from '../styles/hero.module.css'
 
 
-export default function Home() {
+export default function Home({videoId}) {
   
-
+  console.log(videoId.attributes.codigo);
   return (
     <>
       <Layout title={"Inicio"}>
@@ -28,9 +28,27 @@ export default function Home() {
           ¡Tenemos justo lo que necesitas! Entra y conoce nuestro canal y
           descubre todo Acapulco en un solo lugar. Desde hoteles, restaurantes,
           playas y los mejores lugares que debes conocer."
-          video="UhgdzL3r1Ek"
+          video={`${videoId.attributes.codigo}`}
         />
       </Layout>
     </>
   );
 }
+export async function getServerSideProps(context) {
+  const { params } = context;
+
+  const response = await fetch(`${process.env.API_URL}/youtube`)
+  const {data}  = await response.json()
+
+  const videoId = data
+
+
+
+
+  return {
+    props: {
+      videoId
+    },
+  };
+}
+

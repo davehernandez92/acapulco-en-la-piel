@@ -5,7 +5,9 @@ import GaleriaComponent from '@/components/galeria'
 import styles from '../styles/galeriaPage.module.css'
 
 
-export default function NuestraGaleria({photos}) {
+export default function NuestraGaleria({data}) {
+
+  const {attributes: photos} = data
   return (
     <Layout>
 
@@ -22,7 +24,7 @@ export default function NuestraGaleria({photos}) {
           </div>
           <div className={styles.galeria}>
             <GaleriaComponent
-              images={photos}
+              images={photos.imagenes.data}
             />
 
           </div>
@@ -33,19 +35,13 @@ export default function NuestraGaleria({photos}) {
   )
 }
 export async function getServerSideProps(){
-  const apiKey = process.env.IMAGE_API
-    const response = await fetch(`https://api.pexels.com/v1/search?query=miami&orientation=landscape&per_page=20`, {
-      headers: {
-        Authorization: apiKey
-      }
-    });
-    const data = await response.json();
-    const photos = data.photos;
-
+  
+  const response = await fetch(`${process.env.API_URL}/galeria?populate=imagenes`)
+  const {data} = await response.json()
     return {
         props: {
           
-          photos
+          data
         }
       }
 }

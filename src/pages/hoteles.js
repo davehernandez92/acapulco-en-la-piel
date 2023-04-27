@@ -70,7 +70,7 @@ export async function getServerSideProps(context) {
   //     face: "https://www.facebook.com/hotelcarlisa",
   //     insta: "",
   //     email: "hotel_carlisa@hotmail.com",
-  //     video: "https://www.youtube.com/embed/UhgdzL3r1Ek",
+  //     video: "UhgdzL3r1Ek",
   //   },
   //   {
   //     id: 2,
@@ -84,7 +84,7 @@ export async function getServerSideProps(context) {
   //     face: "https://www.facebook.com/dondemiraelsol",
   //     insta: "",
   //     email: "",
-  //     video: "https://www.youtube.com/embed/WAscT2C_vBk",
+  //     video: "WAscT2C_vBk",
   //   },
   //   {
   //     id: 3,
@@ -98,7 +98,7 @@ export async function getServerSideProps(context) {
   //     face: "https://www.facebook.com/people/Hotel-Miramar/100054317718961/",
   //     insta: "",
   //     email: "",
-  //     video: "https://www.youtube.com/embed/lXcCu1BJQeA",
+  //     video: "lXcCu1BJQeA",
   //   },
   //   {
   //     id: 4,
@@ -112,7 +112,7 @@ export async function getServerSideProps(context) {
   //     face: "https://www.facebook.com/DelValleHotel",
   //     insta: "",
   //     email: "hotelvalle6204@gmail.com",
-  //     video: "https://www.youtube.com/embed/YU6FlmCXCfQ",
+  //     video: "YU6FlmCXCfQ",
   //   },
   //   {
   //     id: 5,
@@ -140,7 +140,7 @@ export async function getServerSideProps(context) {
   //     face: "",
   //     insta: "",
   //     email: "",
-  //     video: "https://www.youtube.com/embed/GWAzQ0PRQs8",
+  //     video: "GWAzQ0PRQs8",
   //   },
   //   {
   //     id: 7,
@@ -154,12 +154,12 @@ export async function getServerSideProps(context) {
   //     face: "https://www.facebook.com/people/Hotel-De-Los-Reyes-Acapulco/100063568123958/",
   //     insta: "",
   //     email: "hoteldelosreyesacapulco@hotmail.com",
-  //     video: "https://www.youtube.com/embed/2nGxCWnHHaM",
+  //     video: "2nGxCWnHHaM",
   //   },
   // ];
  
 
-  const response = await fetch('http://localhost:1337/api/hoteles?populate=imagenes')
+  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`)
   const {data} = await response.json()
 
 

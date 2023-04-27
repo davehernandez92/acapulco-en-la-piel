@@ -34,7 +34,39 @@
           cursor: pointer;
   }
 
+.prev_button h1{
+  position: absolute;
+  bottom: 10%;
+  left: 25%;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+  font-size: 4rem;
+ 
+}
+.next_button h1 {
+  position: absolute;
+  bottom: 10%;
+  right: 25%;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+  font-size: 4rem
+}
   .expanded_image_overlay {
     max-width: 90%;
     max-height: 90%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .next_button h1{
+      right: 5%;
+    }
+    .prev_button h1 {
+      left: 5%;
+    }
   }

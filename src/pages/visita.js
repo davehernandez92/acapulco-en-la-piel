@@ -108,7 +108,7 @@ export default function Visita() {
 
             <Link href={"/"} target="_blank" className={`${styles.gridItem__v} ${styles.v} `}>
               <Image
-                src={"https://unsplash.it/400/600"}
+                src={"https://unsplash.it/700/400"}
                 width={600}
                 height={900}
                 alt={"Unsplash basic"}
@@ -125,7 +125,7 @@ export default function Visita() {
               <Image
                 src={"https://unsplash.it/700/400"}
                 width={600}
-                height={400}
+                height={900}
                 alt={"Unsplash basic"}
               />
               <h3>Plaza Galerias Acapulco</h3>
