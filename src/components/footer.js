@@ -15,6 +15,7 @@ export default function Footer() {
         height={180}
         className={styles.logo}
         alt="Acapulco en la piel Logo"
+        priority
       />
       <div className={styles.footer__menu}>
         <nav className={styles.footer__nav}>

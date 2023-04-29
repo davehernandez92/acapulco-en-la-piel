@@ -15,7 +15,7 @@ export default function Home() {
       <Layout title={"Inicio"}>
         <div className={heroCSS.hero}>
           <motion.div animate={{ y: -20 }} transition={{ delay: 1 }}>
-            <Image src={logo} alt={"Acapulco en la piel logo"} width={310} height={310}/>
+            <Image src={logo} alt={"Acapulco en la piel logo"} width={150} height={150} priority/>
           </motion.div>
         </div>
 

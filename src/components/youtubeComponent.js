@@ -1,23 +1,25 @@
 import React from 'react';
-import YouTube from 'react-youtube';
+import  { lazy, Suspense } from 'react';
 import styles from '../styles/youtube.module.css'
 
-class VideoPlayer extends React.Component {
-  render() {
-    const opts = {
-      height: '390',
-      width: '640',
-      playerVars: {
-        autoplay: 1,
-      },
-    };
 
-    return <YouTube className={styles.iframe} videoId={this.props.videoId} opts={opts} onReady={this._onReady} />;
-  }
-  _onReady(event) {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  }
+
+const YouTube = lazy(() => import('react-youtube'));
+
+function VideoPlayer(props) {
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <YouTube className={styles.iframe} videoId={props.videoId} opts={opts} />;
+    </Suspense>
+  );
 }
 
 export default VideoPlayer;

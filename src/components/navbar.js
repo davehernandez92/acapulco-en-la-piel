@@ -53,9 +53,7 @@ export default function Navbar() {
         <li>
           <Link className={styles.menu__txt} href="/mercancia">Mercancia Oficial</Link>
         </li>
-        <li>
-          <Link className={styles.menu__txt} href="/contacto">Contacto</Link>
-        </li>
+        
         <div className={styles.icons__div}>
           <Link href={"https://www.instagram.com/acapulcoenlapiel/"}>
           <Image src={instagramLogo} alt="Logo" width={32} height={32} />
