@@ -11,7 +11,7 @@ export default function Main() {
         className={styles.main__grid}
       >
       
-        <Link href="hoteles" className={styles.grid__item1}>
+        <Link href="/hoteles" className={styles.grid__item1}>
           <div className={styles.grid__info}>
             <div>
               <h2>Hoteles para ti</h2>
@@ -29,7 +29,7 @@ export default function Main() {
           </div>
         </Link>
 
-        <Link href="restaurantes" className={styles.grid__item2}>
+        <Link href="/restaurantes" className={styles.grid__item2}>
           <div className={styles.grid__info}>
             <div>
               <h2>Para comer Primo!</h2>
@@ -48,7 +48,7 @@ export default function Main() {
           </div>
         </Link>
 
-        <Link href="servicios" className={styles.grid__item3}>
+        <Link href="/servicios" className={styles.grid__item3}>
           <div className={styles.grid__info}>
             <div>
               <h2>Servicios</h2>
@@ -68,7 +68,7 @@ export default function Main() {
           </div>
         </Link>
 
-        <Link href="nuestraGaleria" className={styles.grid__item4}>
+        <Link href="/nuestraGaleria" className={styles.grid__item4}>
           <div className={styles.grid__info}>
             <div>
               <h2>La foto Primo!</h2>
@@ -85,7 +85,7 @@ export default function Main() {
           </div>
         </Link>
 
-        <Link href="mercancia" className={styles.grid__item5}>
+        <Link href="/mercancia" className={styles.grid__item5}>
           <div className={styles.grid__info}>
             <div>
               <h2>Mercancia Oficial</h2>
@@ -101,7 +101,7 @@ export default function Main() {
           </div>
         </Link>
 
-        <Link href="visita" className={styles.grid__item6}>
+        <Link href="/visita" className={styles.grid__item6}>
           <div className={styles.grid__info}>
             <div>
               <h2>Para visitar</h2>
