@@ -17,7 +17,7 @@ function VideoPlayer(props) {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <YouTube className={styles.iframe} videoId={props.videoId} opts={opts} />;
+      <YouTube className={styles.iframe} videoId={props.videoId} opts={opts} />
     </Suspense>
   );
 }

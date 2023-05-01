@@ -1,11 +1,10 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import next from '../../public/next.png'
-import previous from '../../public/back.png'
 import styles from "../styles/galeria.module.css";
 
 export default function GaleriaComponent({ images }) {
-  
+
 
   const [expandedImageIndex, setExpandedImageIndex] = useState(null);
 
@@ -32,15 +31,28 @@ export default function GaleriaComponent({ images }) {
   return (
     <div className={styles.image_gallery}>
       {images.map((image, index) => (
-        <div key={index} className={styles.image_container}>
+        <motion.div
+          key={index}
+          className={styles.image_container}
+          initial={{ opacity: 0, y:-20 }}
+          animate={{ opacity: 1, y:0 }}
+          transition={{
+            type: "spring",
+            stiffness: 70,
+            damping: 20,
+            delay: 0.5,
+          }}
+        >
           <Image
             src={image.attributes.formats.large.url}
             alt={image.attributes.alternativeText}
             width={image.attributes.formats.large.width}
             height={image.attributes.formats.large.height}
-            onClick={() => expandImage(index)}
+            onClick={() => expandImage(index)
+            }
+
           />
-        </div>
+        </motion.div>
       ))}
 
       {expandedImageIndex !== null && (
@@ -62,6 +74,8 @@ export default function GaleriaComponent({ images }) {
                 height={
                   images[expandedImageIndex].attributes.formats.large.height
                 }
+                className={styles.expandImage}
+                
               />
 
               {expandedImageIndex > 0 && (
