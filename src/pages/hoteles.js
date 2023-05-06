@@ -1,12 +1,15 @@
-import React, { useRef, useEffect } from "react";
+
 import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
 import Layout from '@/components/layout'
-import Card from '@/components/card';
+
 import Link from 'next/link';
 import heroCSS from '../styles/hero.module.css'
 import styles from '../styles/hoteles.module.css'
+// Dynamically import the Card component
+const Card = dynamic(() => import('@/components/card'), { ssr: false });
 
 export default function Hoteles({hotels}) {
   const { ref, inView } = useInView({
