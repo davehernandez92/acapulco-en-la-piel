@@ -107,6 +107,18 @@ img{
  .button:active{
   transform: scale(0.95);
  }
+ .error{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15rem;
+ }
+ .errorLink{
+  color: black;
+  display: flex;
+  justify-content: center;
+ }
 @media screen and (min-width: 768px) {
   li, a {
     font-size: 2rem;
