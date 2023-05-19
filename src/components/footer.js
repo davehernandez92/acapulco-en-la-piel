@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image";
-import logo from '../../public/Acapulco-logo.png'
+import logo from '../../public/logoNegro.png'
 import facebook from "../../public/facebook-.svg"
 import youtube from "../../public/youtube-.svg"
 import instagram from "../../public/instagram-.svg"
