@@ -36,13 +36,14 @@ useEffect(() => {
       <Layout title={"Inicio"}>
         <div className={heroCSS.hero}>
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+            initial={{ opacity:0, y: 20 }}
+            animate={{ opacity: 1, y:0 }}
             transition={{
               type: "spring",
               stiffness: 68,
               damping: 20,
-              delay: 0.5,
+              delay: 0.6,
+              duration:0.9,
             }}
           >
             <Image

@@ -1,14 +1,35 @@
+import { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import styles from '../styles/main.module.css'
 
 export default function Main() {
+  
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+const variants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 }
+  };
+
+  
+
   return (
     <>
       <h1 className={styles.heading}>Hey primo! checa esto! </h1>
-      <div
+      <motion.div
+      ref={ref}
         className={styles.main__grid}
+        variants={variants}
+            initial="initial"
+            animate={inView ? 'animate' : 'initial'}
+            transition={{ duration: 1 }}
       >
       
         <Link href="/hoteles" className={styles.grid__item1}>
@@ -117,7 +138,7 @@ export default function Main() {
             <p className={styles.info__p}>¡No te los pierdas!</p>
           </div>
         </Link>
-      </div>
+      </motion.div>
     </>
   );
 }
