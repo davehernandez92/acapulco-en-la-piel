@@ -1,3 +1,4 @@
+
 import Layout from '@/components/layout'
 import Youtube from "@/components/youtube";
 import GaleriaComponent from '@/components/galeria.jsx'
@@ -5,8 +6,8 @@ import EmailButton from '@/components/emailButton'
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Link from "next/link"
-
-import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer";
+import { motion } from 'framer-motion';
 import styles from '../../styles/hotel.module.css'
 
 import mapsIcon from '../../../public/google-maps.png'
@@ -18,7 +19,10 @@ import website  from '../../../public/internet.png'
 
 export default function Hotel({hotelData}) {
   const {attributes: hotel} = hotelData
-
+  const { ref, inView } = useInView({
+    threshold: 0.5, // Trigger the animation when the element is 50% in view
+    triggerOnce: true // Only trigger the animation once
+  });
 
     const router = useRouter();
     if (router.isFallback) {
@@ -60,12 +64,33 @@ export default function Hotel({hotelData}) {
           </div>
         </div>
 
-        <div className={styles.descripcion}>
+        <motion.div
+          className={styles.descripcion}
+          ref={ref}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{
+            type: "spring",
+            stiffness: 110,
+            damping: 20,
+            duration: 1,
+            delay: 0.3,
+          }}
+        >
           <h3> Descripcion </h3>
           <p>{hotel.text}</p>
-        </div>
+        </motion.div>
         <div className={styles.datos}>
-          <div className={styles.datos__direccion}>
+          <motion.div className={styles.datos__direccion}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
+          transition={{
+            type: "spring",
+            stiffness: 110,
+            damping: 20,
+            duration: 0.5,
+            delay: 0.6,
+          }}
+          
+          >
             <h4>Direccion:</h4>
             <Link className={styles.link} href={hotel.maps} target="_blank">
               <p>{hotel.direccion}</p>
@@ -75,8 +100,17 @@ export default function Hotel({hotelData}) {
                 alt={"Google maps Icono"}
               />
             </Link>
-          </div>
-          <div className={styles.datos__contacto}>
+          </motion.div>
+          <motion.div className={styles.datos__contacto}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+          transition={{
+            type: "spring",
+            stiffness: 110,
+            damping: 20,
+            duration: 0.5,
+            delay: 0.6,
+          }}
+          >
             <h4>Contacto: </h4>
             <Link
               className={styles.contacto__telLink}
@@ -126,7 +160,7 @@ export default function Hotel({hotelData}) {
 
               <EmailButton email={hotel.email} />
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className={styles.galeria}>
           <Youtube
@@ -144,21 +178,30 @@ export default function Hotel({hotelData}) {
     
 }
 
-export async function getServerSideProps(context) {
-  const { params } = context;
+export async function getStaticPaths() {
+  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
+  const { data } = await response.json();
 
-  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`)
-  const {data}  = await response.json()
+  const paths = data.map(hotel => ({
+    params: { url: hotel.attributes.url }
+  }));
 
-  const hotelData = data.find((hotel) => hotel.attributes.url === params.url);
+  return {
+    paths,
+    fallback: true
+  };
+}
 
+export async function getStaticProps({ params }) {
+  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
+  const { data } = await response.json();
 
-
+  const hotelData = data.find(hotel => hotel.attributes.url === params.url);
 
   return {
     props: {
       hotelData
-    },
+    }
   };
 }
 
