@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import Layout from '@/components/layout'
 import Card from '@/components/card';
 import heroCSS from '../styles/heroRest.module.css'
+import loader from '../styles/loader.module.css'
 import styles from '../styles/hoteles.module.css'
 
 
 import Link from 'next/link';
 
 export default function Restaurantes({restaurantes}) {
+  const [isLoading, setIsLoading] = useState(false);
 
+  if (isLoading) {
+    return (
+      <Layout title="Restaurantes">
+        <div className={`${loader.ldsellipsis} `}></div>
+      </Layout>
+    );
+  }
   
   return (
     <Layout title={"Restaurantes"}>
@@ -50,16 +60,24 @@ export default function Restaurantes({restaurantes}) {
   );
 }
 
-export async function getServerSideProps(context) {
-  
+export async function getStaticProps() {
+  try {
+    const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`);
+    const { data } = await response.json();
 
-  const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`)
-  const {data} = await response.json()
-
-  return {
+    return {
       props: {
-        restaurantes: data
-      }
-    }
+        restaurantes: data,
+      },
+      revalidate: 60, // Revalidate every 60 seconds for incremental static regeneration
+    };
+  } catch (error) {
+    console.error('Error fetching restaurantes:', error);
+    return {
+      props: {
+        restaurantes: [],
+      },
+    };
+  }
   
 }

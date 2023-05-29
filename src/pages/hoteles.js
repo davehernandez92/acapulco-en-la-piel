@@ -20,15 +20,7 @@ export default function Hoteles({ initialHotels }) {
     triggerOnce: true // Only trigger the animation once
   });
 
-  const loadHotels = async () => {
-    setIsLoading(true);
-
-    const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
-    const { data } = await response.json();
-
-    setHotels(data);
-    setIsLoading(false);
-  };
+  
   
  
   return (
@@ -63,7 +55,7 @@ export default function Hoteles({ initialHotels }) {
           </motion.div>
 
           {isLoading ? (
-            <div className={`${loader.ldsellipsis} `}></div> // Replace with your desired loader component
+            <div className={`${loader.ldsellipsis} `}></div>
           ) : (
           <div className={styles.card__wrapper}>
             {hotels.map((hotel) => (
@@ -90,11 +82,7 @@ export default function Hoteles({ initialHotels }) {
           </div>
           )}
 
-          {!isLoading && (
-            <button onClick={loadHotels} className={styles.load__button}>
-              Load Hotels
-            </button>
-          )}
+          
         </div>
       </>
     </Layout>
