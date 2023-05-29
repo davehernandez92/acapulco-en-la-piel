@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
@@ -8,14 +8,28 @@ import Layout from '@/components/layout'
 import Link from 'next/link';
 import heroCSS from '../styles/hero.module.css'
 import styles from '../styles/hoteles.module.css'
+import loader from '../styles/loader.module.css'
 // Dynamically import the Card component
 const Card = dynamic(() => import('@/components/card'), { ssr: false });
 
-export default function Hoteles({hotels}) {
+export default function Hoteles({ initialHotels }) {
+  const [hotels, setHotels] = useState(initialHotels);
+  const [isLoading, setIsLoading] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.5, // Trigger the animation when the element is 50% in view
     triggerOnce: true // Only trigger the animation once
   });
+
+  const loadHotels = async () => {
+    setIsLoading(true);
+
+    const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
+    const { data } = await response.json();
+
+    setHotels(data);
+    setIsLoading(false);
+  };
+  
  
   return (
     <Layout title={"Hoteles"}>
@@ -47,6 +61,10 @@ export default function Hoteles({hotels}) {
           >
             <h2>Checa nuestra lista de Hoteles!</h2>
           </motion.div>
+
+          {isLoading ? (
+            <div className={`${loader.ldsellipsis} `}></div> // Replace with your desired loader component
+          ) : (
           <div className={styles.card__wrapper}>
             {hotels.map((hotel) => (
               <Card
@@ -70,23 +88,27 @@ export default function Hoteles({hotels}) {
               />
             ))}
           </div>
+          )}
+
+          {!isLoading && (
+            <button onClick={loadHotels} className={styles.load__button}>
+              Load Hotels
+            </button>
+          )}
         </div>
       </>
     </Layout>
   );
 }
 
-export async function getServerSideProps(context) {
-   
-
-  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`)
-  const {data} = await response.json()
-
+export async function getStaticProps() {
+  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
+  const { data } = await response.json();
 
   return {
-      props: {
-        hotels:data
-      }
-    }
-  
+    props: {
+      initialHotels: data,
+    },
+    revalidate: 60, // Revalidate every 60 seconds for incremental static regeneration
+  };
 }
