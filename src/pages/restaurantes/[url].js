@@ -20,6 +20,7 @@ import website  from '../../../public/internet.png'
 
 export default function Restaurante({ restauranteData }) {
   const { attributes: restaurante } = restauranteData
+  
   const router = useRouter();
   const { ref, inView } = useInView({
     threshold: 0.5, // Trigger the animation when the element is 50% in view
@@ -205,7 +206,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`)
   const { data } = await response.json()
-
+ 
+console.log(data);
   const restauranteData = data.find(restaurante => restaurante.attributes.url === params.url)
 
   return {

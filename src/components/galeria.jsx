@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "../styles/galeria.module.css";
 
-export default function GaleriaComponent({ images }) {
+export default function GaleriaComponent({ images, hotel }) {
 
 
   const [expandedImageIndex, setExpandedImageIndex] = useState(null);
@@ -45,7 +45,7 @@ export default function GaleriaComponent({ images }) {
         >
           <Image
             src={image.attributes.formats.large.url}
-            alt={image.attributes.alternativeText}
+            alt={`Imagen de: ${hotel}`}
             width={image.attributes.formats.large.width}
             height={image.attributes.formats.large.height}
             onClick={() => expandImage(index)

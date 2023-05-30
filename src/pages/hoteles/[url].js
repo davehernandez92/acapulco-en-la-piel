@@ -170,7 +170,7 @@ export default function Hotel({hotelData}) {
           />
 
           <h1 className={styles.galeria__title}>Galeria</h1>
-          <GaleriaComponent images={hotel.imagenes.data} />
+          <GaleriaComponent images={hotel.imagenes.data} hotel={hotel.title} />
         </div>
       </>
     </Layout>
