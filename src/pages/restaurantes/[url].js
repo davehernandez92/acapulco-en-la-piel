@@ -19,6 +19,7 @@ import website  from '../../../public/internet.png'
 
 
 export default function Restaurante({ restauranteData }) {
+ 
   const { attributes: restaurante } = restauranteData
   
   const router = useRouter();
@@ -57,6 +58,7 @@ export default function Restaurante({ restauranteData }) {
 
           <div className={styles.slide}>
             <Image
+              priority={true}
               src={restaurante.imagenes.data[0].attributes.formats.medium.url}
               width={
                 restaurante.imagenes.data[0].attributes.formats.medium.width
@@ -207,9 +209,13 @@ export async function getStaticProps({ params }) {
   const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`)
   const { data } = await response.json()
  
-console.log(data);
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
   const restauranteData = data.find(restaurante => restaurante.attributes.url === params.url)
-
+  console.log(restauranteData);
   return {
     props: {
       restauranteData

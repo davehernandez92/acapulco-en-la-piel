@@ -18,7 +18,9 @@ import website  from '../../../public/internet.png'
 
 
 export default function Hotel({hotelData}) {
+  
   const {attributes: hotel} = hotelData
+  console.log(hotel);
   const { ref, inView } = useInView({
     threshold: 0.5, // Trigger the animation when the element is 50% in view
     triggerOnce: true // Only trigger the animation once
@@ -55,6 +57,7 @@ export default function Hotel({hotelData}) {
 
           <div className={styles.slide}>
             <Image
+              priority={true}
               src={hotel.imagenes.data[0].attributes.formats.medium.url}
               width={hotel.imagenes.data[0].attributes.formats.medium.width}
               height={hotel.imagenes.data[0].attributes.formats.medium.height}
@@ -196,6 +199,11 @@ export async function getStaticProps({ params }) {
   const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
   const { data } = await response.json();
 
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
   const hotelData = data.find(hotel => hotel.attributes.url === params.url);
 
   return {

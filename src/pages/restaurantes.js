@@ -65,7 +65,12 @@ export async function getStaticProps() {
   try {
     const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`);
     const { data } = await response.json();
-    
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
       props: {
         restaurantes: data,

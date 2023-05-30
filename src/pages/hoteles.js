@@ -89,14 +89,18 @@ export default function Hoteles({ initialHotels }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
   const { data } = await response.json();
-
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+  
   return {
     props: {
       initialHotels: data,
-    },
-    revalidate: 60, // Revalidate every 60 seconds for incremental static regeneration
+    } // Revalidate every 60 seconds for incremental static regeneration
   };
 }
