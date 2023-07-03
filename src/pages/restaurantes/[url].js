@@ -215,7 +215,7 @@ export async function getStaticProps({ params }) {
     };
   }
   const restauranteData = data.find(restaurante => restaurante.attributes.url === params.url)
-  console.log(restauranteData);
+  
   return {
     props: {
       restauranteData
