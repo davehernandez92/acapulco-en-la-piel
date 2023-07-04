@@ -191,34 +191,22 @@ export default function Restaurante({ restauranteData }) {
     
 }
 
-export async function getStaticPaths() {
-  const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`)
-  const { data } = await response.json()
+export async function getServerSideProps({ query }) {
+  const { url } = query;
+  const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`);
+  const { data } = await response.json();
 
-  const paths = data.map(restaurante => ({
-    params: { url: restaurante.attributes.url }
-  }));
-
-  return {
-    paths,
-    fallback: true
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`)
-  const { data } = await response.json()
- 
   if (!data) {
     return {
       notFound: true,
     };
   }
-  const restauranteData = data.find(restaurante => restaurante.attributes.url === params.url)
-  
+
+  const restauranteData = data.find(restaurante => restaurante.attributes.url === url);
+
   return {
     props: {
-      restauranteData
+      restauranteData: restauranteData || null,
     }
   };
 }

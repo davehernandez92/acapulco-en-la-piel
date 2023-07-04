@@ -1,4 +1,3 @@
-
 import Layout from '@/components/layout'
 import Youtube from "@/components/youtube";
 import GaleriaComponent from '@/components/galeria.jsx'
@@ -20,7 +19,7 @@ import website  from '../../../public/internet.png'
 export default function Hotel({hotelData}) {
   
   const {attributes: hotel} = hotelData
-  console.log(hotel);
+
   const { ref, inView } = useInView({
     threshold: 0.5, // Trigger the animation when the element is 50% in view
     triggerOnce: true // Only trigger the animation once
@@ -180,22 +179,8 @@ export default function Hotel({hotelData}) {
   );
     
 }
-
-export async function getStaticPaths() {
-  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
-  const { data } = await response.json();
-
-  const paths = data.map(hotel => ({
-    params: { url: hotel.attributes.url }
-  }));
-
-  return {
-    paths,
-    fallback: true
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ query }) {
+  const { url } = query;
   const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
   const { data } = await response.json();
 
@@ -204,12 +189,12 @@ export async function getStaticProps({ params }) {
       notFound: true,
     };
   }
-  const hotelData = data.find(hotel => hotel.attributes.url === params.url);
+
+  const hotelData = data.find(hotel => hotel.attributes.url === url);
 
   return {
     props: {
-      hotelData
+      hotelData: hotelData || null,
     }
   };
 }
-
