@@ -5,8 +5,7 @@ const nextConfig = {
     
     domains: ['images.pexels.com', 'unsplash.it', 'res.cloudinary.com']
   },
-  serverTimeout: 20000,
-
+ 
   
 }
 
