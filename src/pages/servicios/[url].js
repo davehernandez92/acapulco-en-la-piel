@@ -5,6 +5,8 @@ import EmailButton from '@/components/emailButton'
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { servData } from '@/json/servData'
+
 import styles from '../../styles/hotel.module.css'
 import mapsIcon from '../../../public/google-maps.png'
 import facebook from '../../../public/facebook.png'
@@ -18,7 +20,7 @@ import website  from '../../../public/internet.png'
 
 export default function Servicio({servicioData}) {
 
-  const {attributes: servicio} = servicioData
+  const servicio = servicioData
 
     const router = useRouter();
     if (router.isFallback) {
@@ -51,11 +53,10 @@ export default function Servicio({servicioData}) {
 
           <div className={styles.slide}>
             <Image
-              src={servicio.imagenes.data[0].attributes.formats.medium.url}
-              width={servicio.imagenes.data[0].attributes.formats.medium.width}
-              height={
-                servicio.imagenes.data[0].attributes.formats.medium.height
-              }
+              priority={true}
+              src={servicio.image}
+              width={"500"}
+              height={"350"}
               alt={`Imagen de ${servicio.title}`}
               className={styles.image__slide}
             />
@@ -144,7 +145,7 @@ export default function Servicio({servicioData}) {
         <div className={styles.galeria}>
           <h1 className={styles.galeria__title}>Galeria</h1>
 
-          <GaleriaComponent images={servicio.imagenes.data} />
+          {/* <GaleriaComponent images={servicio.imagenes.data} /> */}
         </div>
       </>
     </Layout>
@@ -152,17 +153,23 @@ export default function Servicio({servicioData}) {
     
 }
 
-export async function getServerSideProps(context) {
-    const { params } = context
-   
 
-  const response = await fetch(`${process.env.API_URL}/servicios?populate=imagenes`)
-  const {data} = await response.json()
-  const servicioData = data.find(servicio => servicio.attributes.url === params.url)
-  return {
-    props:{
-      servicioData
-    }
+export async function getServerSideProps({ query }) {
+  const { url } = query;
+  const servicioData = servData.find(servicio => servicio.url === url);
+  
+  
+  if (!servicioData) {
+    return {
+      notFound: true,
+    };
   }
-    
+
+ 
+  return {
+    props: {
+      servicioData,
+    }
+  };
 }
+

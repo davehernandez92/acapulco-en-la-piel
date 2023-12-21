@@ -1,6 +1,7 @@
 import Layout from '@/components/layout'
 import Card from '@/components/card';
 import Link from 'next/link';
+import { servData } from '@/json/servData';
 import heroCSS from '../styles/heroServicios.module.css'
 import styles from '../styles/hoteles.module.css'
 
@@ -35,13 +36,13 @@ export default function Servicios({
                 <Card
                 key={servicio.id}
                 path={'servicios'}
-                image={servicio.attributes.imagenes.data[0].attributes.formats.small.url}
-                width={servicio.attributes.imagenes.data[0].attributes.formats.small.width}
-                height={servicio.attributes.imagenes.data[0].attributes.formats.small.height}
-                title={servicio.attributes.title}
-                subtitle={servicio.attributes.subtitle}
-                text={servicio.attributes.text}
-                url={servicio.attributes.url}
+                image={servicio.image}
+                  width={servicio.width}
+                  height={servicio.height}
+                  title={servicio.title}
+                  subtitle={servicio.subtitle}
+                  text={servicio.text}
+                  url={servicio.url}
               />
               ))}
             </div>
@@ -52,55 +53,10 @@ export default function Servicios({
   );
 }
 
-export async function getServerSideProps(){
-
-  // const servicios =[
-  //   {
-  //     id: 1,       
-  //     image: allanB,
-  //     title: "Allan Bañuelos ",
-  //     subtitle: "Fotografía | Video ",
-  //     text: "Fotografo y Acapulqueño especializado en fotografia & video de Bodas y eventos asi como  expertos en la captura de la belleza natural de Acapulco y sus alrededores. ",
-  //     url: "allan-banuelos",
-  //     maps: "https://goo.gl/maps/chYKVnnaTG7ZfjbT9",
-  //     telefono:"744 484 1929",
-  //     face:'https://www.facebook.com/profile.php?id=100081724249097',
-  //     insta:'https://www.instagram.com/allanbanuelosphotography/',
-  //     email:'allanbanuelosphotography@gmail.com'
-  //   },
-  //   {
-  //     id: 2,       
-  //     image: downtown,
-  //     title: "Downtown Media ",
-  //     subtitle: "Estudio audiovisual | Publicidad ",
-  //     text: "Estudio audiovisual creativo, especializados en video, edición, fotografía y animación 2D",
-  //     url: "downtownMedia",
-  //     maps: "https://goo.gl/maps/chYKVnnaTG7ZfjbT9",
-  //     telefono:"744 163 0982",
-  //     face:'https://www.facebook.com/profile.php?id=100086572431112',
-  //     insta:'https://www.instagram.com/downtown.mediamx/',
-  //     email:'downtownmedia@gmail.com'
-  //   },
-  //   {
-  //     id: 3,       
-  //     image: keraUltra,
-  //     title: "Keraultra Acapulco",
-  //     subtitle: "Beauty Bar | Distribuidora ",
-  //     text: "Beauty bar en acapulco especializados en alisados y tratamientos capilares, Somos distribuidores exlusivos de Keraultra en Acapulco",
-  //     url: "keraultra-acapulco",
-  //     maps: "https://goo.gl/maps/RfUJx18HUt1t7rLLA",
-  //     telefono:"744 278 5788 ",
-  //     face:'https://www.facebook.com/profile.php?id=100087754384581',
-  //     insta:'https://www.instagram.com/keraultra_acapulco/',
-  //     email:'keraultraacapulco@gmail.com'
-  //   }
-  // ];
-  const response = await fetch(`${process.env.API_URL}/servicios?populate=imagenes`)
-  const {data} = await response.json()
-
+export async function getServerSideProps() {
   return {
-    props:{
-      servicios : data
-    }
-  }
+    props: {
+      servicios: servData,
+    },
+  };
 }

@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
+import { hotelsData } from "@/json/hotelData";
 import styles from '../../styles/hotel.module.css'
 
 import mapsIcon from '../../../public/google-maps.png'
@@ -17,8 +18,8 @@ import website  from '../../../public/internet.png'
 
 
 export default function Hotel({hotelData}) {
-  
-  const {attributes: hotel} = hotelData
+
+  const hotel = hotelData
 
   const { ref, inView } = useInView({
     threshold: 0.5, // Trigger the animation when the element is 50% in view
@@ -29,7 +30,7 @@ export default function Hotel({hotelData}) {
     if (router.isFallback) {
         return <div>Loading...</div>
       }
-    
+   
   
     
 
@@ -57,9 +58,9 @@ export default function Hotel({hotelData}) {
           <div className={styles.slide}>
             <Image
               priority={true}
-              src={hotel.imagenes.data[0].attributes.formats.medium.url}
-              width={hotel.imagenes.data[0].attributes.formats.medium.width}
-              height={hotel.imagenes.data[0].attributes.formats.medium.height}
+              src={hotel.image}
+              width={"500"}
+              height={"350"}
               alt={`Imagen de ${hotel.title}`}
               className={styles.image__slide}
             />
@@ -82,16 +83,16 @@ export default function Hotel({hotelData}) {
           <p>{hotel.text}</p>
         </motion.div>
         <div className={styles.datos}>
-          <motion.div className={styles.datos__direccion}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
-          transition={{
-            type: "spring",
-            stiffness: 110,
-            damping: 20,
-            duration: 0.5,
-            delay: 0.6,
-          }}
-          
+          <motion.div
+            className={styles.datos__direccion}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
+            transition={{
+              type: "spring",
+              stiffness: 110,
+              damping: 20,
+              duration: 0.5,
+              delay: 0.6,
+            }}
           >
             <h4>Direccion:</h4>
             <Link className={styles.link} href={hotel.maps} target="_blank">
@@ -103,15 +104,16 @@ export default function Hotel({hotelData}) {
               />
             </Link>
           </motion.div>
-          <motion.div className={styles.datos__contacto}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
-          transition={{
-            type: "spring",
-            stiffness: 110,
-            damping: 20,
-            duration: 0.5,
-            delay: 0.6,
-          }}
+          <motion.div
+            className={styles.datos__contacto}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+            transition={{
+              type: "spring",
+              stiffness: 110,
+              damping: 20,
+              duration: 0.5,
+              delay: 0.6,
+            }}
           >
             <h4>Contacto: </h4>
             <Link
@@ -151,7 +153,7 @@ export default function Hotel({hotelData}) {
                 className={
                   (hotel.website && styles.website__icon) || styles.hidden
                 }
-                href={`${hotel.website}`}
+                href={`${hotel.title}`}
               >
                 {hotel.website && (
                   <>
@@ -172,7 +174,7 @@ export default function Hotel({hotelData}) {
           />
 
           <h1 className={styles.galeria__title}>Galeria</h1>
-          <GaleriaComponent images={hotel.imagenes.data} hotel={hotel.title} />
+          {/* <GaleriaComponent images={hotel.image} hotel={hotel.title} /> */}
         </div>
       </>
     </Layout>
@@ -181,20 +183,20 @@ export default function Hotel({hotelData}) {
 }
 export async function getServerSideProps({ query }) {
   const { url } = query;
-  const response = await fetch(`${process.env.API_URL}/hoteles?populate=imagenes`);
-  const { data } = await response.json();
-
-  if (!data) {
+  // Assuming hotelsData is an array of hotel objects
+  const hotelData = hotelsData.find(hotel => hotel.url === url);
+  
+  
+  
+  if (!hotelData) {
     return {
       notFound: true,
     };
   }
 
-  const hotelData = data.find(hotel => hotel.attributes.url === url);
-
   return {
     props: {
-      hotelData: hotelData || null,
-    }
+      hotelData,
+    },
   };
 }

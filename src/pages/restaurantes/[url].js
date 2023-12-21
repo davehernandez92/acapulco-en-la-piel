@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useInView } from "react-intersection-observer";
 import { motion } from 'framer-motion';
+import { restData } from '@/json/restaurantesData'
 import styles from '../../styles/hotel.module.css'
 
 import mapsIcon from '../../../public/google-maps.png'
@@ -20,7 +21,7 @@ import website  from '../../../public/internet.png'
 
 export default function Restaurante({ restauranteData }) {
  
-  const { attributes: restaurante } = restauranteData
+  const restaurante = restauranteData
   
   const router = useRouter();
   const { ref, inView } = useInView({
@@ -57,15 +58,11 @@ export default function Restaurante({ restauranteData }) {
           <h2 className={styles.subtitle}>{restaurante.subtitle}</h2>
 
           <div className={styles.slide}>
-            <Image
+          <Image
               priority={true}
-              src={restaurante.imagenes.data[0].attributes.formats.medium.url}
-              width={
-                restaurante.imagenes.data[0].attributes.formats.medium.width
-              }
-              height={
-                restaurante.imagenes.data[0].attributes.formats.medium.height
-              }
+              src={restaurante.image}
+              width={"500"}
+              height={"350"}
               alt={`Imagen de ${restaurante.title}`}
               className={styles.image__slide}
             />
@@ -183,7 +180,7 @@ export default function Restaurante({ restauranteData }) {
         <div className={styles.galeria}>
           <h1 className={styles.galeria__title}>Galeria</h1>
 
-          <GaleriaComponent images={restaurante.imagenes.data} />
+          {/* <GaleriaComponent images={restaurante.imagenes.data} /> */}
         </div>
       </>
     </Layout>
@@ -193,20 +190,19 @@ export default function Restaurante({ restauranteData }) {
 
 export async function getServerSideProps({ query }) {
   const { url } = query;
-  const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`);
-  const { data } = await response.json();
-
-  if (!data) {
+  const restauranteData = restData.find(restaurante => restaurante.url === url);
+  
+  
+  if (!restauranteData) {
     return {
       notFound: true,
     };
   }
 
-  const restauranteData = data.find(restaurante => restaurante.attributes.url === url);
-
+ 
   return {
     props: {
-      restauranteData: restauranteData || null,
+      restauranteData,
     }
   };
 }

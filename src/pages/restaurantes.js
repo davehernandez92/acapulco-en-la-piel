@@ -4,7 +4,7 @@ import Card from '@/components/card';
 import heroCSS from '../styles/heroRest.module.css'
 import loader from '../styles/loader.module.css'
 import styles from '../styles/hoteles.module.css'
-
+import { restData } from '@/json/restaurantesData';
 
 import Link from 'next/link';
 
@@ -44,13 +44,13 @@ export default function Restaurantes({restaurantes}) {
               <Card
                 key={restaurante.id}
                 path={'restaurantes'}
-                image={restaurante.attributes.imagenes.data[0].attributes.formats.small.url}
-                width={restaurante.attributes.imagenes.data[0].attributes.formats.small.width}
-                height={restaurante.attributes.imagenes.data[0].attributes.formats.small.height}
-                title={restaurante.attributes.title}
-                subtitle={restaurante.attributes.subtitle}
-                text={restaurante.attributes.text}
-                url={restaurante.attributes.url}
+                image={restaurante.image}
+                  width={restaurante.width}
+                  height={restaurante.height}
+                  title={restaurante.title}
+                  subtitle={restaurante.subtitle}
+                  text={restaurante.text}
+                  url={restaurante.url}
               />
             ))}
            
@@ -61,29 +61,10 @@ export default function Restaurantes({restaurantes}) {
   );
 }
 
-export async function getStaticProps() {
-  try {
-    const response = await fetch(`${process.env.API_URL}/restaurantes?populate=imagenes`);
-    const { data } = await response.json();
-    if (!data) {
-      return {
-        notFound: true,
-      };
-    }
-
-    return {
-      props: {
-        restaurantes: data,
-      },
-      revalidate: 60, // Revalidate every 60 seconds for incremental static regeneration
-    };
-  } catch (error) {
-    console.error('Error fetching restaurantes:', error);
-    return {
-      props: {
-        restaurantes: [],
-      },
-    };
-  }
-  
+export async function getServerSideProps() {
+  return {
+    props: {
+      restaurantes: restData,
+    },
+  };
 }
