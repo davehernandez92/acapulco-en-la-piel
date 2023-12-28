@@ -3,11 +3,11 @@ import Link from 'next/link'
 import Layout from '@/components/layout'
 import GaleriaComponent from '@/components/galeria'
 import styles from '../styles/galeriaPage.module.css'
+import { getGaleriaImages } from '@/utils/cloudinary'
 
+export default function NuestraGaleria({publicIds}) {
 
-export default function NuestraGaleria({data}) {
-
-  const {attributes: photos} = data
+  const photos= publicIds
   return (
     <Layout>
 
@@ -24,7 +24,7 @@ export default function NuestraGaleria({data}) {
           </div>
           <div className={styles.galeria}>
             <GaleriaComponent
-              images={photos.imagenes.data}
+              images={photos}
             />
 
           </div>
@@ -34,14 +34,13 @@ export default function NuestraGaleria({data}) {
     </Layout>
   )
 }
-export async function getServerSideProps(){
+export async function getServerSideProps() {
+  const publicIds = await getGaleriaImages();
   
-  const response = await fetch(`${process.env.API_URL}/galeria?populate=imagenes`)
-  const {data} = await response.json()
-    return {
-        props: {
-          
-          data
-        }
-      }
+
+  return {
+    props: {
+      publicIds,
+    },
+  };
 }
